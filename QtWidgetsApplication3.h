@@ -5,8 +5,7 @@
 #include <qtcpserver.h>
 #include <QAbstractSocket>
 #include <QTcpServer>
-class QTcpSocket;
-class QFile;
+
 
 class QtWidgetsApplication3 : public QMainWindow
 {
@@ -15,12 +14,14 @@ class QtWidgetsApplication3 : public QMainWindow
 public:
     QtWidgetsApplication3(QWidget *parent = Q_NULLPTR);
 public slots:
-    void start();
-    void acceptConnection();
-    void updateServerProgress();
-    void displayError(QAbstractSocket::SocketError socketError);
     void startBtnClicked();
 
 private:
     Ui::QtWidgetsApplication3Class ui;
+    QTcpServer tcpServer;
+    qint64 totalBytes;
+    qint64 bytesReceived;
+    qint64 fileNameSize;
+    QString m_fileName;
+    QByteArray m_inBlock;
 };
