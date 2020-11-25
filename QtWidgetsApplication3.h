@@ -23,4 +23,12 @@ public slots:
 
 private:
     Ui::QtWidgetsApplication3Class ui;
+    QTcpServer m_tcpServer;
+    QTcpSocket* m_tcpServerConnection;
+    qint64 m_totalBytes;
+    qint64 m_bytesReceived;
+    qint64 m_fileNameSize;
+    QString m_fileName;
+    QFile* m_localFile;
+    QByteArray m_inBlock;
 };
