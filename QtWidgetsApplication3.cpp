@@ -13,7 +13,7 @@ QtWidgetsApplication3::QtWidgetsApplication3(QWidget *parent)
     ui.setupUi(this);
     setWindowTitle(QString::fromUtf8("¼ÆËã»úÍøÂç¿ÎÉè£¬2018023417"));
     ui.startButton->setText("¿ªÊ¼¼àÌý");
-    ui.StatusLabel->setText("ÉèÖÃ¼àÌý¶Ë¿Ú");
+    ui.label->setText("ÉèÖÃ¼àÌý¶Ë¿Ú");
     connect(&tcpServer, SIGNAL(newConnection()), this, SLOT(acceptConnection()));
     connect(ui.startButton, &QPushButton::clicked, this, &QtWidgetsApplication3::startBtnClicked);
 
@@ -21,7 +21,7 @@ QtWidgetsApplication3::QtWidgetsApplication3(QWidget *parent)
 
 void QtWidgetsApplication3::startBtnClicked()
 {
-    if (!tcpServer.listen(QHostAddress::LocalHost, 10086)) {
+    if (!tcpServer.listen(QHostAddress::LocalHost, ui.lineEdit->text().toInt())) {
         qDebug() << tcpServer.errorString();
         close();
         return;
