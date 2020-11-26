@@ -88,9 +88,13 @@ void QtWidgetsApplication3::updateServerProgress()
         inBlock = tcpServerConnection->readAll();
         //localFile->setFileName(dirname + fileName);
         localFile->write(inBlock);
-        QFile tmp = inBlock;
+        QFile file_tmp_dis = inBlock;
+        file_tmp_dis.setFileName("D:/" + fileName);
+        QString tmp = inBlock;
         qDebug() << tmp;
-        tmp.setFileName("D:/" + fileName);
+        qDebug() << dirname;
+        QString dis_tmp = dirname + "/" + fileName;
+        file_save(tmp, dis_tmp);
         inBlock.resize(0);
     }
     ui.progressBar->setMaximum(totalBytes);
@@ -120,4 +124,12 @@ void QtWidgetsApplication3::selectdir()
 {
     dirname = QFileDialog::getExistingDirectory(NULL, "caption", ".");
     ui.label_2->setText(dirname);
+}
+
+void QtWidgetsApplication3::file_save(QString x, QString dis)
+{
+    QFile file_tmp(dis);
+    file_tmp.open(QIODevice::WriteOnly);
+    file_tmp.write(x.toUtf8());
+    file_tmp.close();
 }

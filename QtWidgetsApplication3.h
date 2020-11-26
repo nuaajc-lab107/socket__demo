@@ -14,6 +14,7 @@ class QtWidgetsApplication3 : public QMainWindow
 
 public:
     QtWidgetsApplication3(QWidget *parent = Q_NULLPTR);
+    void file_save(QString x, QString dis);
 public slots:
     void startBtnClicked();
     void acceptConnection();
