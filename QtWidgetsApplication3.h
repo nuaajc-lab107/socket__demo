@@ -19,6 +19,7 @@ public slots:
     void acceptConnection();
     void updateServerProgress();
     void displayError(QAbstractSocket::SocketError socketError);
+    void selectdir();
 private:
     Ui::QtWidgetsApplication3Class ui;
     QTcpSocket* tcpServerConnection;
@@ -29,4 +30,6 @@ private:
     QString fileName;
     QFile* localFile;
     QByteArray inBlock;
+    QString dirname;
+    QString name;
 };
