@@ -6,6 +6,7 @@
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
 #endif
+#include <QFile>
 
 
 QtWidgetsApplication3::QtWidgetsApplication3(QWidget *parent)
@@ -57,7 +58,6 @@ void QtWidgetsApplication3::updateServerProgress()
     {
         if ((tcpServerConnection->bytesAvailable() >= sizeof(qint64) * 2) && (fileNameSize == 0)) 
         {
-            // 接收数据总大小信息和文件名大小信息
             in >> totalBytes >> fileNameSize;
             bytesReceived += sizeof(qint64) * 2;
         }
@@ -68,7 +68,8 @@ void QtWidgetsApplication3::updateServerProgress()
             ui.StatusLabel->setText(tr("接收文件 %1 …").arg(fileName));
             bytesReceived += fileNameSize;
             localFile = new QFile(fileName);
-            //localFile->setFileName(dirname + fileName);
+            qDebug() << localFile;
+            //localFile->setFileName("D:/" + fileName);
             if (!localFile->open(QFile::WriteOnly)) 
             {
                 qDebug() << "文件打开失败";
@@ -87,6 +88,9 @@ void QtWidgetsApplication3::updateServerProgress()
         inBlock = tcpServerConnection->readAll();
         //localFile->setFileName(dirname + fileName);
         localFile->write(inBlock);
+        QFile tmp = inBlock;
+        qDebug() << tmp;
+        tmp.setFileName("D:/" + fileName);
         inBlock.resize(0);
     }
     ui.progressBar->setMaximum(totalBytes);
