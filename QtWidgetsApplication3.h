@@ -15,12 +15,14 @@ class QtWidgetsApplication3 : public QMainWindow
 public:
     QtWidgetsApplication3(QWidget *parent = Q_NULLPTR);
     void file_save(QString x, QString dis);
+    void file_copy(QString filename, QString dis);
 public slots:
     void startBtnClicked();
     void acceptConnection();
     void updateServerProgress();
     void displayError(QAbstractSocket::SocketError socketError);
     void selectdir();
+    //void file_copy(QString filename, QString dis);
 private:
     Ui::QtWidgetsApplication3Class ui;
     QTcpSocket* tcpServerConnection;
@@ -33,4 +35,5 @@ private:
     QByteArray inBlock;
     QString dirname;
     QString name;
+    QString dis_tmp;
 };

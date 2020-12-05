@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>QtWidgetsApplication3</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="QtWidgetsApplication3.qrc">
+    <normaloff>:/QtWidgetsApplication3/logo.ico</normaloff>:/QtWidgetsApplication3/logo.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="startButton">
     <property name="geometry">
@@ -100,6 +104,19 @@
     </property>
     <property name="text">
      <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="copyButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>180</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>copy</string>
     </property>
    </widget>
   </widget>
